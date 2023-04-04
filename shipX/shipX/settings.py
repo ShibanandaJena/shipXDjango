@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -31,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "customer.apps.CustomerConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -54,7 +56,7 @@ ROOT_URLCONF = "shipX.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": ['customer/templates'],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -62,6 +64,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.static"
             ],
         },
     },
@@ -108,8 +111,27 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / 'static',
+                    BASE_DIR / 'static/css',
+                    BASE_DIR / 'static/css/bootstrap',
+                    BASE_DIR / 'static/fonts',
+                    BASE_DIR / 'static/fonts/flaticon',
+                    BASE_DIR / 'static/fonts/flaticon/font',
+                    BASE_DIR / 'static/fonts/icomoon',
+                    BASE_DIR / 'static/fonts/icomoon/font',
+                    BASE_DIR / 'static/images',
+                    BASE_DIR / 'static/images/blog',
+                    BASE_DIR / 'static/images/services',
+                    BASE_DIR / 'static/js',
+                    BASE_DIR / 'static/scss',
+                    BASE_DIR / 'static/scss/bootstrap',
+                    BASE_DIR / 'static/scss/bootstrap/mixins',
+                    BASE_DIR / 'static/videos',
 
-STATIC_URL = "static/"
+
+                    ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
